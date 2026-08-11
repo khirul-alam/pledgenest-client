@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# PledgeNest — Client
 
-## Getting Started
+Next.js (App Router) দিয়ে বানানো **PledgeNest**-এর ফ্রন্টএন্ড। Phase 3: ফাউন্ডেশন (Auth system + basic layout + home page)।
 
-First, run the development server:
+## ফোল্ডার স্ট্রাকচার
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+pledgenest-client/
+├── src/
+│   ├── app/
+│   │   ├── layout.js              # রুট লেআউট (AuthProvider + Navbar + Footer)
+│   │   ├── page.js                 # হোম পেজ
+│   │   ├── globals.css
+│   │   ├── login/                  # (Phase 4 এ পূর্ণ হবে)
+│   │   └── register/               # (Phase 4 এ পূর্ণ হবে)
+│   │
+│   ├── components/
+│   │   └── shared/
+│   │       ├── Navbar.js
+│   │       ├── Footer.js
+│   │       └── PrivateRoute.js     # প্রাইভেট রুট গার্ড — reload bug ফিক্স সহ
+│   │
+│   ├── providers/
+│   │   ├── AuthContext.js
+│   │   └── AuthProvider.js         # Firebase auth + JWT ম্যানেজমেন্ট
+│   │
+│   ├── hooks/
+│   │   ├── useAuth.js
+│   │   └── useAxiosSecure.js       # secure API কলের জন্য axios instance
+│   │
+│   ├── firebase/
+│   │   └── firebase.config.js
+│   │
+│   └── services/                   # (Phase 4+ এ imgbbService, campaignService ইত্যাদি যোগ হবে)
+│
+├── package.json
+├── tailwind.config.js
+├── postcss.config.js
+├── next.config.mjs
+├── .env.local.example
+└── .gitignore
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## এখন পর্যন্ত যা কাজ করে (Phase 3)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- Firebase Authentication সেটআপ (Email/Password + Google প্রস্তুত)
+- AuthProvider — reload করলে যাতে ভুলভাবে logout/redirect না হয়, তার ফিক্স করা আছে
+- useAxiosSecure — token সহ protected API কল, 401/403 এ auto logout
+- Navbar (logged-in vs logged-out state ভিন্ন), Footer
+- Home page — Hero, Top Funded (placeholder), Testimonial (placeholder), ৩টা এক্সট্রা সেকশন
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## এখনো বাকি
 
-## Learn More
+- Login / Register পেজ (ImgBB আপলোড সহ)
+- Dashboard লেআউট + Supporter/Creator/Admin রুট
+- Notification popup, Report feature
+- Stripe পেমেন্ট
+- Swiper দিয়ে আসল hero slider + animation
 
-To learn more about Next.js, take a look at the following resources:
+## সেটআপ করবেন কীভাবে
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm install
+cp .env.local.example .env.local   # তারপর আসল Firebase/ImgBB key বসান
+npm run dev
+```
