@@ -5,14 +5,14 @@ import Footer from "../components/shared/Footer";
 import { Toaster } from "react-hot-toast";
 
 export const metadata = {
-  title: "PledgeNest | মানুষের স্বপ্নে বিনিয়োগ করুন",
+  title: "PledgeNest | Invest in People's Dreams",
   description:
-    "PledgeNest একটা crowdfunding প্ল্যাটফর্ম যেখানে ক্রিয়েটররা ক্যাম্পেইন চালু করে আর সাপোর্টাররা ক্রেডিট দিয়ে সেগুলোকে বাস্তবে রূপ দিতে সাহায্য করে।",
+    "PledgeNest is a crowdfunding platform where creators launch campaigns and supporters contribute credits to help bring them to life.",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="bn">
+    <html lang="en">
       <body className="bg-neutral-950 text-white antialiased">
         <AuthProvider>
           <Navbar />

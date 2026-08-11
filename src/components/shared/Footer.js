@@ -9,8 +9,8 @@ export default function Footer() {
           Pledge<span className="text-emerald-400">Nest</span>
         </Link>
         <p className="max-w-md text-sm text-neutral-400">
-          মানুষের স্বপ্ন আর দরকারি প্রজেক্টগুলোকে একসাথে যুক্ত করছি সাপোর্টারদের সাথে —
-          একটা সময়ে একটা পলেজ।
+          Connecting people&apos;s dreams and meaningful projects with the supporters
+          who help bring them to life — one pledge at a time.
         </p>
         <div className="flex gap-4 text-xl text-neutral-400">
           <a href="https://facebook.com/your-profile" target="_blank" rel="noreferrer" className="hover:text-emerald-400">
@@ -24,7 +24,7 @@ export default function Footer() {
           </a>
         </div>
         <p className="text-xs text-neutral-600">
-          © {new Date().getFullYear()} PledgeNest. সর্বস্বত্ব সংরক্ষিত।
+          © {new Date().getFullYear()} PledgeNest. All rights reserved.
         </p>
       </div>
     </footer>

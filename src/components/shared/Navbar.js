@@ -13,9 +13,9 @@ export default function Navbar() {
   const handleLogout = async () => {
     try {
       await logoutUser();
-      toast.success("সফলভাবে লগআউট হয়েছে");
+      toast.success("Logged out successfully");
     } catch (error) {
-      toast.error("লগআউট করা যায়নি");
+      toast.error("Failed to log out");
     }
   };
 
@@ -26,28 +26,28 @@ export default function Navbar() {
           Pledge<span className="text-emerald-400">Nest</span>
         </Link>
 
-        {/* ডেস্কটপ মেনু */}
+        {/* Desktop menu */}
         <div className="hidden items-center gap-6 md:flex">
           <Link href="/explore-campaigns" className="text-sm text-neutral-300 hover:text-white">
-            ক্যাম্পেইন এক্সপ্লোর করুন
+            Explore Campaigns
           </Link>
 
           {!user ? (
             <>
               <Link href="/login" className="text-sm text-neutral-300 hover:text-white">
-                লগইন
+                Login
               </Link>
               <Link
                 href="/register"
                 className="rounded-full bg-emerald-500 px-4 py-2 text-sm font-medium text-neutral-950 hover:bg-emerald-400"
               >
-                রেজিস্টার
+                Register
               </Link>
             </>
           ) : (
             <>
               <Link href="/dashboard" className="text-sm text-neutral-300 hover:text-white">
-                ড্যাশবোর্ড
+                Dashboard
               </Link>
               <img
                 src={user.photoURL || "https://i.ibb.co/2d1yv0J/default-avatar.png"}
@@ -59,7 +59,7 @@ export default function Navbar() {
                 onClick={handleLogout}
                 className="rounded-full border border-neutral-700 px-4 py-2 text-sm text-neutral-300 hover:border-red-400 hover:text-red-400"
               >
-                লগআউট
+                Logout
               </button>
             </>
           )}
@@ -74,32 +74,32 @@ export default function Navbar() {
           </a>
         </div>
 
-        {/* মোবাইল মেনু টগল */}
+        {/* Mobile menu toggle */}
         <button
           className="text-white md:hidden"
           onClick={() => setMenuOpen((prev) => !prev)}
-          aria-label="মেনু খুলুন"
+          aria-label="Open menu"
         >
           ☰
         </button>
       </div>
 
-      {/* মোবাইল মেনু */}
+      {/* Mobile menu */}
       {menuOpen && (
         <div className="flex flex-col gap-3 border-t border-neutral-800 bg-neutral-950 px-4 py-4 md:hidden">
           <Link href="/explore-campaigns" onClick={() => setMenuOpen(false)}>
-            ক্যাম্পেইন এক্সপ্লোর করুন
+            Explore Campaigns
           </Link>
           {!user ? (
             <>
-              <Link href="/login" onClick={() => setMenuOpen(false)}>লগইন</Link>
-              <Link href="/register" onClick={() => setMenuOpen(false)}>রেজিস্টার</Link>
+              <Link href="/login" onClick={() => setMenuOpen(false)}>Login</Link>
+              <Link href="/register" onClick={() => setMenuOpen(false)}>Register</Link>
             </>
           ) : (
             <>
-              <Link href="/dashboard" onClick={() => setMenuOpen(false)}>ড্যাশবোর্ড</Link>
+              <Link href="/dashboard" onClick={() => setMenuOpen(false)}>Dashboard</Link>
               <button onClick={handleLogout} className="text-left text-red-400">
-                লগআউট
+                Logout
               </button>
             </>
           )}
