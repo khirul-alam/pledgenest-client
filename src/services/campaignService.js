@@ -40,3 +40,32 @@ export async function getCreatorStats(axiosSecure, email) {
   const res = await axiosSecure.get(`/creator-stats/${email}`);
   return res.data;
 }
+export async function getAllCampaignsAdmin(axiosSecure) {
+  const res = await axiosSecure.get("/campaigns-all/admin");
+  return res.data;
+}
+
+export async function deleteCampaignAdmin(axiosSecure, id) {
+  const res = await axiosSecure.delete(`/campaigns/${id}/admin`);
+  return res.data;
+}
+
+export async function suspendCampaign(axiosSecure, id) {
+  const res = await axiosSecure.patch(`/campaigns/${id}/suspend`);
+  return res.data;
+}
+
+export async function getPendingCampaignsAdmin(axiosSecure) {
+  const res = await axiosSecure.get("/campaigns-pending/admin");
+  return res.data;
+}
+
+export async function updateCampaignStatus(axiosSecure, id, status) {
+  const res = await axiosSecure.patch(`/campaigns/${id}/status`, { status });
+  return res.data;
+}
+
+export async function getAdminStats(axiosSecure) {
+  const res = await axiosSecure.get("/admin-stats");
+  return res.data;
+}
