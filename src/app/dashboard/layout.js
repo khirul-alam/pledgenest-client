@@ -23,18 +23,18 @@ function DashboardContent({ children }) {
       <DashboardSidebar role={role} />
 
       <div className="flex-1">
-        <div className="flex items-center justify-between gap-4 border-b border-neutral-800 bg-neutral-900/40 px-4 py-3 md:px-6">
-          <Link href="/" className="text-lg font-bold">
+        <div className="flex items-center justify-between gap-2 border-b border-neutral-800 bg-neutral-900/40 px-3 py-3 sm:gap-4 sm:px-4 md:px-6">
+          <Link href="/" className="shrink-0 text-base font-bold sm:text-lg">
             Pledge<span className="text-emerald-400">Nest</span>
           </Link>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
             <div className="hidden text-right sm:block">
               <p className="text-sm font-medium capitalize">{user?.displayName}</p>
               <p className="text-xs capitalize text-neutral-400">{role}</p>
             </div>
 
-            <span className="rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400">
+            <span className="whitespace-nowrap rounded-full border border-emerald-500/40 bg-emerald-500/10 px-2 py-1 text-xs font-medium text-emerald-400 sm:px-3">
               {credits ?? 0} Credits
             </span>
 
@@ -43,7 +43,7 @@ function DashboardContent({ children }) {
             <img
               src={user?.photoURL || "https://i.ibb.co/2d1yv0J/default-avatar.png"}
               alt={user?.displayName || "user"}
-              className="h-9 w-9 rounded-full object-cover ring-2 ring-emerald-400"
+              className="h-8 w-8 shrink-0 rounded-full object-cover ring-2 ring-emerald-400 sm:h-9 sm:w-9"
             />
           </div>
         </div>
