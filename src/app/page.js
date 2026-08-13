@@ -1,15 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import CampaignCard from "../components/home/CampaignCard";
+import HeroSlider from "../components/home/HeroSlider";
+import TestimonialSlider from "../components/home/TestimonialSlider";
 import { getTopFundedCampaigns } from "../services/campaignService";
-
-const heroSlides = [
-  {
-    title: "From a good idea to a real project",
-    subtitle: "Launch your campaign on PledgeNest and raise credits from supporters",
-  },
-];
 
 export default function HomePage() {
   const [topCampaigns, setTopCampaigns] = useState([]);
@@ -24,20 +18,7 @@ export default function HomePage() {
 
   return (
     <div>
-      <section className="relative overflow-hidden border-b border-neutral-800 bg-gradient-to-b from-emerald-950/40 to-neutral-950 px-4 py-24 text-center">
-        <h1 className="mx-auto max-w-3xl text-4xl font-bold leading-tight md:text-5xl">
-          {heroSlides[0].title}
-        </h1>
-        <p className="mx-auto mt-4 max-w-xl text-neutral-400">{heroSlides[0].subtitle}</p>
-        <div className="mt-8 flex justify-center gap-4">
-          <Link href="/explore-campaigns" className="rounded-full bg-emerald-500 px-6 py-3 font-medium text-neutral-950 hover:bg-emerald-400">
-            Explore Campaigns
-          </Link>
-          <Link href="/register" className="rounded-full border border-neutral-700 px-6 py-3 font-medium hover:border-emerald-400">
-            Join as a Creator
-          </Link>
-        </div>
-      </section>
+      <HeroSlider />
 
       <section className="mx-auto max-w-7xl px-4 py-16">
         <h2 className="mb-8 text-2xl font-bold">Top Funded Campaigns</h2>
@@ -57,9 +38,9 @@ export default function HomePage() {
       </section>
 
       <section className="border-t border-neutral-800 bg-neutral-900/40 px-4 py-16">
-        <div className="mx-auto max-w-4xl text-center">
-          <h2 className="mb-8 text-2xl font-bold">What Supporters Say</h2>
-          <p className="text-neutral-400">Testimonial slider coming soon</p>
+        <div className="mx-auto max-w-5xl">
+          <h2 className="mb-8 text-center text-2xl font-bold">What Supporters Say</h2>
+          <TestimonialSlider />
         </div>
       </section>
 
@@ -100,10 +81,22 @@ export default function HomePage() {
       <section className="mx-auto max-w-7xl px-4 py-16">
         <h2 className="mb-8 text-2xl font-bold">Platform Impact in Numbers</h2>
         <div className="grid grid-cols-2 gap-6 text-center md:grid-cols-4">
-          <div><p className="text-3xl font-bold text-emerald-400">0</p><p className="text-sm text-neutral-400">Active Campaigns</p></div>
-          <div><p className="text-3xl font-bold text-emerald-400">0</p><p className="text-sm text-neutral-400">Total Supporters</p></div>
-          <div><p className="text-3xl font-bold text-emerald-400">0</p><p className="text-sm text-neutral-400">Credits Raised</p></div>
-          <div><p className="text-3xl font-bold text-emerald-400">0</p><p className="text-sm text-neutral-400">Successful Projects</p></div>
+          <div className="hero-fade-in">
+            <p className="text-3xl font-bold text-emerald-400">0</p>
+            <p className="text-sm text-neutral-400">Active Campaigns</p>
+          </div>
+          <div className="hero-fade-in" style={{ animationDelay: "80ms" }}>
+            <p className="text-3xl font-bold text-emerald-400">0</p>
+            <p className="text-sm text-neutral-400">Total Supporters</p>
+          </div>
+          <div className="hero-fade-in" style={{ animationDelay: "160ms" }}>
+            <p className="text-3xl font-bold text-emerald-400">0</p>
+            <p className="text-sm text-neutral-400">Credits Raised</p>
+          </div>
+          <div className="hero-fade-in" style={{ animationDelay: "240ms" }}>
+            <p className="text-3xl font-bold text-emerald-400">0</p>
+            <p className="text-sm text-neutral-400">Successful Projects</p>
+          </div>
         </div>
       </section>
     </div>
