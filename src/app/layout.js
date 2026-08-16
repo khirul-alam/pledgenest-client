@@ -8,6 +8,12 @@ export const metadata = {
   title: "PledgeNest | Invest in People's Dreams",
   description:
     "PledgeNest is a crowdfunding platform where creators launch campaigns and supporters contribute credits to help bring them to life.",
+  openGraph: {
+    title: "PledgeNest",
+    description: "Back the campaigns you believe in, or launch your own.",
+    type: "website",
+  },
+  themeColor: "#10b981",
 };
 
 export default function RootLayout({ children }) {
