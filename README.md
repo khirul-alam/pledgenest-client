@@ -1,5 +1,5 @@
 # PledgeNest
-
+> Built as part of a Junior MERN Stack Developer assessment.
 A full-stack crowdfunding platform where creators launch campaigns and supporters back them with platform credits — built with Next.js, Express, MongoDB, Firebase Authentication, and Stripe.
 
 **Admin Email:** admin.test@example.com
