@@ -12,8 +12,17 @@ export default function NotificationBell() {
 
   const [notifications, setNotifications] = useState([]);
   const [open, setOpen] = useState(false);
-  const [lastSeenCount, setLastSeenCount] = useState(0); // যতগুলো ইউজার সবশেষ popup খুলে দেখেছে
+  const [lastSeenAt, setLastSeenAt] = useState(null); // localStorage থেকে লোড হবে
   const popupRef = useRef(null);
+
+  // ইউজার লগইন হওয়ার সাথে সাথে localStorage থেকে "শেষ কখন দেখেছেন" পড়া হচ্ছে।
+  // এটা component remount / page reload এর পরও টিকে থাকে, কারণ এটা browser storage এ,
+  // React state এ না।
+  useEffect(() => {
+    if (!user?.email) return;
+    const stored = localStorage.getItem(`pledgenest-notif-seen-${user.email}`);
+    setLastSeenAt(stored ? new Date(stored) : new Date(0));
+  }, [user?.email]);
 
   useEffect(() => {
     if (!user?.email) return;
@@ -37,9 +46,14 @@ export default function NotificationBell() {
   const handleToggle = () => {
     setOpen((prev) => {
       const next = !prev;
-      // popup খোলার মুহূর্তে বর্তমান সব notification "দেখা হয়েছে" হিসেবে মার্ক হচ্ছে,
-      // তাই badge এখনই clear হয়ে যাবে — নতুন notification আসলে আবার দেখাবে।
-      if (next) setLastSeenCount(notifications.length);
+      if (next && user?.email) {
+        // popup খোলার মুহূর্তের সময়টা localStorage এ সেভ হচ্ছে — এখন থেকে এই সময়ের
+        // আগের সব notification "দেখা হয়েছে" হিসেবে গণ্য হবে, dashboard ছেড়ে
+        // অন্য পেজে গিয়ে ফিরে এলেও এই তথ্য হারাবে না।
+        const now = new Date();
+        localStorage.setItem(`pledgenest-notif-seen-${user.email}`, now.toISOString());
+        setLastSeenAt(now);
+      }
       return next;
     });
   };
@@ -49,7 +63,9 @@ export default function NotificationBell() {
     if (actionRoute) router.push(actionRoute);
   };
 
-  const unreadCount = Math.max(0, notifications.length - lastSeenCount);
+  const unreadCount = lastSeenAt
+    ? notifications.filter((n) => new Date(n.time) > lastSeenAt).length
+    : notifications.length;
 
   return (
     <div className="relative" ref={popupRef}>

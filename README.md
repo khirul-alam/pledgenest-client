@@ -1,15 +1,13 @@
 # PledgeNest
-> Built as part of a Junior MERN Stack Developer assessment.
+
 A full-stack crowdfunding platform where creators launch campaigns and supporters back them with platform credits — built with Next.js, Express, MongoDB, Firebase Authentication, and Stripe.
 
-**Admin Email:** admin.test@example.com
-**Admin Password:** Test123
+**Admin Email:** admin@pledgenest.com
+**Admin Password:** Admin@123
 
-**Live Site URL:** _(replace with your Vercel deployment link)_
-**Client Repository:** _(replace with your GitHub client repo link)_
-**Server Repository:** _(replace with your GitHub server repo link)_
-
-> ⚠️ Before submitting, replace the admin credentials above with a real account on your deployed database, and update the placeholder links.
+**Live Site URL:** https://pledgenest-client.vercel.app
+**Client Repository:** https://github.com/khirul-alam/pledgenest-client
+**Server Repository:** https://github.com/khirul-alam/pledgenest-server
 
 ## Features
 
@@ -19,8 +17,8 @@ A full-stack crowdfunding platform where creators launch campaigns and supporter
 - Campaign lifecycle with admin moderation — every campaign starts as `pending` and only becomes publicly visible after an admin approves it.
 - Creators review incoming contributions one by one, with a detail modal and one-click approve/reject; rejections automatically refund the supporter's credits.
 - Real Stripe checkout for purchasing credit packages, with a graceful test-mode fallback so the flow works end-to-end even before a Stripe key is configured.
-- Withdrawal system with server-enforced business rules (20 credits = \$1, \$10 minimum) and an admin-side "Payment Success" approval step.
-- In-app notification system — a floating, click-outside-to-close bell icon shows real-time updates for contribution approvals, campaign decisions, and withdrawal approvals.
+- Withdrawal system with server-enforced business rules (20 credits = $1, $10 minimum) and an admin-side "Payment Success" approval step.
+- In-app notification system — a floating, click-outside-to-close bell icon shows real-time updates for contribution approvals, campaign decisions, and withdrawal approvals, with read-state persisted across navigation.
 - Community reporting: supporters can flag suspicious campaigns, and admins can dismiss the report, suspend the campaign, or delete it outright.
 - Paginated "My Contributions" history, category and keyword filtering on Explore Campaigns, and a fully responsive layout from mobile to desktop, including the dashboard.
 
@@ -32,17 +30,17 @@ A full-stack crowdfunding platform where creators launch campaigns and supporter
 ## Local Setup
 
 **Server**
-```bash
+\`\`\`bash
 cd pledgenest-server
 npm install
 cp .env.example .env   # fill in MongoDB, JWT, Firebase, and Stripe secret key
 npm run dev
-```
+\`\`\`
 
 **Client**
-```bash
+\`\`\`bash
 cd pledgenest-client
 npm install
 cp .env.local.example .env.local   # fill in Firebase, ImgBB, and Stripe publishable key
 npm run dev
-```
+\`\`\`
