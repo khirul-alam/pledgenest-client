@@ -3,6 +3,7 @@ import AuthProvider from "../providers/AuthProvider";
 import Navbar from "../components/shared/Navbar";
 import Footer from "../components/shared/Footer";
 import { Toaster } from "react-hot-toast";
+import ScrollToTop from "../components/shared/ScrollToTop";
 
 export const metadata = {
   title: "PledgeNest | Invest in People's Dreams",
@@ -21,6 +22,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="bg-neutral-950 text-white antialiased">
         <AuthProvider>
+          <ScrollToTop />
           <Navbar />
           <main className="min-h-screen">{children}</main>
           <Footer />
